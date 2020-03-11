@@ -17,13 +17,13 @@ class ItemFixtures
         $item->setPromotionPrice(7);
         $item->setPromotionQty(4);
 
-        $this->data[] = $item;
+        $this->data[$item->getName()] = $item;
 
         $item = new ItemDTO();
         $item->setName('YB');
         $item->setPrice(12);
 
-        $this->data[] = $item;
+        $this->data[$item->getName()] = $item;
 
         $item = new ItemDTO();
         $item->setName('FC');
@@ -31,13 +31,13 @@ class ItemFixtures
         $item->setPromotionPrice(6);
         $item->setPromotionQty(6);
 
-        $this->data[] = $item;
+        $this->data[$item->getName()] = $item;
 
         $item = new ItemDTO();
         $item->setName('GD');
         $item->setPrice(0.15);
 
-        $this->data[] = $item;
+        $this->data[$item->getName()] = $item;
 
     }
 
