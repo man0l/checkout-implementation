@@ -3,18 +3,21 @@
 
 namespace App\Service;
 
-
-class AbstractCalculate implements CalculateInterface
+abstract class AbstractCalculate implements CalculateInterface
 {
     protected $queue;
+    protected $products;
     function __construct()
     {
         $this->queue = new \SplQueue();
     }
 
-    abstract function scanItem($item);
-    abstract function getTotal();
-    abstract function setPricing($pricing);
+    function setProducts($products)
+    {
+        $this->products = $products;
+    }
 
+    abstract function getTotal();
+    abstract function scanItem($item);
 
 }
