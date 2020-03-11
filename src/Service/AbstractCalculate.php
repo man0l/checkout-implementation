@@ -27,10 +27,6 @@ abstract class AbstractCalculate implements CalculateInterface
 
     protected $totalPrice;
 
-    function __construct()
-    {
-    }
-
     function setProducts($products)
     {
         $this->products = $products;
@@ -106,7 +102,7 @@ abstract class AbstractCalculate implements CalculateInterface
 
         foreach($this->productNames as $productName) {
 
-            if(isset($occurence[$productName])) {
+            if(!isset($occurence[$productName])) {
                 $occurence[$productName] = 0;
             } else {
                 $occurence[$productName] += 1;
