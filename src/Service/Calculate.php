@@ -7,19 +7,16 @@ class Calculate extends AbstractCalculate
 
     function scanItem($item)
     {
-        $this->queue->enqueue($item);
+        if(!$this->isValidProduct($item))
+        {
+            return;
+        }
+
+        $this->scannedItems[$item] = $item;
     }
 
     function getTotal()
     {
-        while ($item = $this->queue->dequeue()) {
-
-        }
+        return $this->totalPrice;
     }
-
-    function setPricing($pricing)
-    {
-
-    }
-
 }
