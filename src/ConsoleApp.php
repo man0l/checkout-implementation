@@ -21,8 +21,7 @@ class ConsoleApp
         if(!$argv) {
             return;
         }
-
-        $this->calculate->setProducts($argv);
+        $this->calculate->setProducts($argv[1]);
         $this->calculate->process();
         $result = $this->calculate->getTotal();
 
