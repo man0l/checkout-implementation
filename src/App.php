@@ -5,7 +5,7 @@ namespace App;
 use App\Service\CalculateInterface;
 use App\Service\ItemFixtures;
 
-class ConsoleApp
+class App
 {
     private $calculate;
 
@@ -16,16 +16,17 @@ class ConsoleApp
         $this->calculate->setFixtureItems($fixtures->getData());
     }
 
-    function run($argv = []) {
+    function run(string $params) {
 
-        if(!$argv) {
+        if(!$params) {
             return;
         }
-        $this->calculate->setProducts($argv[1]);
+        $this->calculate->setProducts($params);
         $this->calculate->process();
         $result = $this->calculate->getTotal();
 
-        echo sprintf("The calculated result is: %s\r\n", $result);
+        //sprintf("The calculated result is: %s\r\n", $result);
+        echo json_encode(['total' => $result]);
     }
 
 }
