@@ -3,13 +3,17 @@
 namespace App;
 
 use App\Service\CalculateInterface;
+use App\Service\ItemFixtures;
 
 class ConsoleApp
 {
     private $calculate;
-    public function __construct(CalculateInterface $calculate)
+
+    public function __construct(CalculateInterface $calculate, ItemFixtures $fixtures)
     {
+        $fixtures->init();
         $this->calculate = $calculate;
+        $this->calculate->setFixtureItems($fixtures->getData());
     }
 
     function run($argv = []) {
@@ -18,7 +22,9 @@ class ConsoleApp
             return;
         }
 
-        $result = $this->calculate->calc($argv);
+        $this->calculate->setProducts($argv);
+        $this->calculate->process();
+        $result = $this->calculate->getTotal();
 
         echo sprintf("The calculated result is: %s\r\n", $result);
     }
