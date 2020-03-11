@@ -64,7 +64,7 @@ abstract class AbstractCalculate implements CalculateInterface
             return;
         }
 
-        $occurence = $this->findOccurrence($this->products);
+        $occurence = $this->findOccurrence();
         $totalPrice = 0;
 
         foreach($this->scannedItems as $scannedItem) {
@@ -103,7 +103,7 @@ abstract class AbstractCalculate implements CalculateInterface
         foreach($this->productNames as $productName) {
 
             if(!isset($occurence[$productName])) {
-                $occurence[$productName] = 0;
+                $occurence[$productName] = 1;
             } else {
                 $occurence[$productName] += 1;
             }
